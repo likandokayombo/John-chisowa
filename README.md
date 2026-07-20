@@ -1,4 +1,4 @@
-This project is heavily influenced by and inspired by [David Umoru](https://davidumoru.me/).
+This project is heavily influenced and inspired by [David Umoru](https://davidumoru.me/).
 
 
 ***This project is still in deveploment***
