@@ -1,0 +1,114 @@
+---
+title: "Typography, Color & Code"
+author: "John Chisowa"
+description: "A look at the design system behind this site — fluid typography, OKLCH color palettes, and syntax highlighting with Expressive Code."
+pubDate: "2026-07-20"
+---
+
+## Typography
+
+Headings are set in **Editorial New**, body copy in **Inter**. Both are scaled fluidly — sizes adjust smoothly based on viewport width rather than jumping at breakpoints.
+
+### Editorial New
+
+Serif · Self-hosted · 200–900
+
+Things worth making are worth making well.
+
+<span class="weight-sample" style="font-weight:200">Ag 200</span>
+<span class="weight-sample" style="font-weight:300">Ag 300</span>
+<span class="weight-sample" style="font-weight:400">Ag 400</span>
+<span class="weight-sample" style="font-weight:500">Ag 500</span>
+<span class="weight-sample" style="font-weight:700">Ag 700</span>
+<span class="weight-sample" style="font-weight:900">Ag 900</span>
+
+### Inter
+
+Sans-serif · Variable · Google Fonts
+
+Designed for screens. Optimised for legibility at every size.
+
+AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz 0123456789
+
+## Styling
+
+Colors are defined in the **OKLCH** color space — a perceptually uniform model that keeps lightness, chroma, and hue independent. Each palette is generated as a percentage of the sRGB gamut maximum, so every hue looks equally vivid at the same step.
+
+The accent throughout the site is **Tomato**.
+
+I use custom CSS variables for spacing, typography, and theming.
+
+### Tomato
+
+<div class="swatch-grid">
+  <div class="swatch" style="background:var(--color-tomato-1)"><span>1</span><span>Subtle bg</span></div>
+  <div class="swatch" style="background:var(--color-tomato-2)"><span>2</span></div>
+  <div class="swatch" style="background:var(--color-tomato-3)"><span>3</span></div>
+  <div class="swatch" style="background:var(--color-tomato-4)"><span>4</span></div>
+  <div class="swatch" style="background:var(--color-tomato-5)"><span>5</span></div>
+  <div class="swatch" style="background:var(--color-tomato-6)"><span>6</span><span>Border</span></div>
+  <div class="swatch" style="background:var(--color-tomato-7)"><span>7</span></div>
+  <div class="swatch" style="background:var(--color-tomato-8)"><span>8</span></div>
+  <div class="swatch" style="background:var(--color-tomato-9)"><span>9</span><span>Solid</span></div>
+  <div class="swatch" style="background:var(--color-tomato-10)"><span>10</span></div>
+  <div class="swatch" style="background:var(--color-tomato-11)"><span>11</span><span>Text</span></div>
+  <div class="swatch" style="background:var(--color-tomato-12)"><span>12</span></div>
+</div>
+
+### Gray
+
+<div class="swatch-grid">
+  <div class="swatch" style="background:var(--color-gray-1)"><span>1</span><span>Page</span></div>
+  <div class="swatch" style="background:var(--color-gray-2)"><span>2</span><span>Card</span></div>
+  <div class="swatch" style="background:var(--color-gray-3)"><span>3</span></div>
+  <div class="swatch" style="background:var(--color-gray-4)"><span>4</span></div>
+  <div class="swatch" style="background:var(--color-gray-5)"><span>5</span></div>
+  <div class="swatch" style="background:var(--color-gray-6)"><span>6</span><span>Border</span></div>
+  <div class="swatch" style="background:var(--color-gray-7)"><span>7</span></div>
+  <div class="swatch" style="background:var(--color-gray-8)"><span>8</span></div>
+  <div class="swatch" style="background:var(--color-gray-9)"><span>9</span></div>
+  <div class="swatch" style="background:var(--color-gray-10)"><span>10</span></div>
+  <div class="swatch" style="background:var(--color-gray-11)"><span>11</span><span>Body</span></div>
+  <div class="swatch" style="background:var(--color-gray-12)"><span>12</span><span>Heading</span></div>
+</div>
+
+## Code
+
+Syntax highlighting is powered by **Expressive Code** with two themes:
+
+- **Rose Pine Dawn** — light mode
+- **Kanagawa Dragon** — dark mode
+
+Here's an example:
+
+```typescript
+interface BlogPost {
+  title: string;
+  description: string;
+  pubDate: Date;
+  slug: string;
+}
+
+function formatDate(date: Date): string {
+  return date.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+}
+```
+
+And a bit of CSS to show the syntax highlighting in action:
+
+```css
+:root {
+  --color-tomato-9: oklch(57% 0.13 25);
+  --color-gray-11: oklch(39% 0.01 0);
+}
+
+.blog-post {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+```

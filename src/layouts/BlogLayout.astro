@@ -1,0 +1,101 @@
+---
+import Layout from './Layout.astro';
+import type { CollectionEntry } from 'astro:content';
+
+type Props = CollectionEntry<'blog'>;
+
+const { frontmatter } = Astro.props;
+---
+
+<Layout>
+  <main class="blog-post">
+    <article>
+      <header class="post-header">
+        <a href="/blog" class="back-link">&larr; Back to blog</a>
+        <h1>{frontmatter.title}</h1>
+        <p class="post-meta">
+          <time datetime={frontmatter.pubDate.toISOString()}>
+            {frontmatter.pubDate.toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })}
+          </time>
+          {frontmatter.description && (
+            <span class="post-description">{frontmatter.description}</span>
+          )}
+        </p>
+      </header>
+      <div class="post-content">
+        <slot />
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<style is:global>
+  .blog-post {
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: var(--space-12) var(--content-padding);
+  }
+
+  .post-header {
+    margin-bottom: var(--space-12);
+  }
+
+  .post-header h1 {
+    margin-top: var(--space-4);
+  }
+
+  .back-link {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-gray-11);
+  }
+
+  .back-link:hover {
+    color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  .post-meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    color: var(--color-gray-10);
+    margin-top: var(--space-4);
+  }
+
+  .post-description {
+    font-size: 1.125rem;
+    color: var(--color-gray-11);
+    line-height: 1.6;
+  }
+
+  .post-content {
+    font-family: var(--font-sans);
+    line-height: 1.8;
+  }
+
+  .post-content h2 {
+    margin-top: var(--space-12);
+  }
+
+  .post-content h3 {
+    margin-top: var(--space-10);
+  }
+
+  .post-content p {
+    margin-bottom: var(--space-6);
+  }
+
+  .post-content a {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+</style>

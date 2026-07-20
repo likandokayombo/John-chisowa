@@ -1,5 +1,5 @@
 ---
-import '../styles/global.css';
+import '../../styles/global.css';
 import { getCollection } from 'astro:content';
 
 const posts = await getCollection('blog');
@@ -14,18 +14,17 @@ posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <title>John Chisowa</title>
+    <title>Blog</title>
   </head>
   <body>
-    <h1>John Chisowa</h1>
-    <p>Welcome to my blog.</p>
-    <h2>Posts</h2>
+    <h1>Blog</h1>
     {
       posts.map((post) => (
         <article>
           <h2>
             <a href={`/blog/${post.id}`}>{post.data.title}</a>
           </h2>
+          <p>By {post.data.author} &middot; {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
           <p>{post.data.description}</p>
         </article>
       ))
