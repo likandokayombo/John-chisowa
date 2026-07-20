@@ -1,46 +1,38 @@
-# Astro Starter Kit: Basics
+This project is heavily influenced by and inspired by [David Umoru](https://davidumoru.me/).
 
-```sh
-pnpm create astro@latest -- --template basics
+
+***This project is still in deveploment***
+
+## Tech Stack
+
+- **Framework** — [Astro](https://astro.build/) v7.1.2
+- **Content** — MDX via `@astrojs/mdx` v7.0.3
+- **Syntax highlighting** — `astro-expressive-code` v0.44.1 (Rose Pine Dawn light / Kanagawa Dragon dark)
+- **Typography** — Editorial New (self-hosted) + Inter (Google Fonts)
+- **Colors** — OKLCH (Tomato accent + Gray palette)
+- **Package manager** — pnpm
+
+## Folder Structure
+
 ```
+src/
+├── content/
+│   ├── content.config.ts          # Content collections config
+│   └── blog/
+│       ├── design-system.mdx      # Blog post about the design system
+│       └── hello-world.mdx        # First blog post
+├── layouts/
+│   ├── BlogLayout.astro           # Blog post layout
+│   └── Layout.astro               # Base HTML layout
+├── pages/
+│   ├── index.astro                # Homepage (lists blog posts)
+│   └── blog/
+│       ├── [slug].astro           # Dynamic blog post route
+│       └── index.astro            # Blog listing page
+└── styles/
+    └── global.css                 # Global styles, fonts, colors
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+public/
+└── fonts/
+    └── editorial-new/             # Self-hosted Editorial New font files
 ```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
