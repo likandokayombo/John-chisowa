@@ -14,20 +14,33 @@ posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <title>Blog</title>
+    <title>Blog — John Chisowa</title>
   </head>
-  <body>
-    <h1>Blog</h1>
-    {
-      posts.map((post) => (
-        <article>
-          <h2>
-            <a href={`/blog/${post.id}`}>{post.data.title}</a>
-          </h2>
-          <p>By {post.data.author} &middot; {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
-          <p>{post.data.description}</p>
-        </article>
-      ))
-    }
+  <body class="bg-gray-1 text-gray-11">
+    <main class="mx-auto max-w-2xl px-6 py-16 md:py-24">
+      <a href="/" class="inline-flex items-center gap-1 text-sm font-medium text-gray-10 hover:text-tomato-9 transition-colors duration-200 no-underline mb-8">
+        &larr; Home
+      </a>
+      <h1 class="font-serif text-4xl md:text-5xl font-extrabold tracking-tight text-gray-12 mb-10">
+        Blog
+      </h1>
+      <div class="space-y-10">
+        {
+          posts.map((post) => (
+            <a href={`/blog/${post.id}`} class="block group no-underline">
+              <article class="border-b border-gray-6 pb-10">
+                <h2 class="font-serif text-xl font-bold text-gray-12 group-hover:text-tomato-9 transition-colors duration-200">
+                  {post.data.title}
+                </h2>
+                <p class="mt-1 text-sm text-gray-10">
+                  {post.data.author} &middot; {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                </p>
+                <p class="mt-2 text-gray-11 leading-relaxed">{post.data.description}</p>
+              </article>
+            </a>
+          ))
+        }
+      </div>
+    </main>
   </body>
 </html>

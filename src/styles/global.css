@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 @font-face {
   font-family: 'Editorial New';
   src: url('/fonts/editorial-new/PPEditorialNew-Regular.otf') format('opentype');
@@ -14,7 +16,7 @@
   font-display: swap;
 }
 
-:root {
+@theme {
   --font-serif: 'Editorial New', Georgia, 'Times New Roman', serif;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
@@ -44,32 +46,9 @@
   --color-gray-10: oklch(49% 0.011 0);
   --color-gray-11: oklch(39% 0.01 0);
   --color-gray-12: oklch(24% 0.012 0);
-
-  --color-bg: var(--color-gray-1);
-  --color-surface: var(--color-gray-2);
-  --color-border: var(--color-gray-6);
-  --color-body: var(--color-gray-11);
-  --color-heading: var(--color-gray-12);
-  --color-accent: var(--color-tomato-9);
-  --color-accent-hover: var(--color-tomato-10);
-
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.25rem;
-  --space-6: 1.5rem;
-  --space-8: 2rem;
-  --space-10: 2.5rem;
-  --space-12: 3rem;
-  --space-16: 4rem;
-  --space-20: 5rem;
-
-  --content-width: 720px;
-  --content-padding: var(--space-6);
 }
 
-*, *::before, *::after {
+* {
   box-sizing: border-box;
 }
 
@@ -78,119 +57,83 @@ html {
 }
 
 body {
-  margin: 0;
   font-family: var(--font-sans);
-  font-size: clamp(1rem, 1.5vw, 1.125rem);
-  line-height: 1.7;
-  color: var(--color-body);
-  background: var(--color-bg);
+  color: var(--color-gray-11);
+  background: var(--color-gray-1);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5, h6 {
+article h1, article h2, article h3, article h4, article h5, article h6 {
   font-family: var(--font-serif);
-  font-weight: 700;
-  line-height: 1.2;
-  color: var(--color-heading);
-  margin: var(--space-8) 0 var(--space-4);
+  color: var(--color-gray-12);
 }
 
-h1 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 900;
-  letter-spacing: -0.02em;
+article p {
+  margin-bottom: 1.5rem;
 }
 
-h2 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 700;
-  letter-spacing: -0.015em;
-}
-
-h3 {
-  font-size: clamp(1.5rem, 3vw, 2.25rem);
-  font-weight: 600;
-}
-
-h4 {
-  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-  font-weight: 600;
-}
-
-p {
-  margin: 0 0 var(--space-6);
-}
-
-a {
-  color: var(--color-accent);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-a:hover {
-  color: var(--color-accent-hover);
+article a {
+  color: var(--color-tomato-9);
   text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  border-radius: 8px;
+article a:hover {
+  color: var(--color-tomato-10);
 }
 
-blockquote {
-  margin: var(--space-8) 0;
-  padding: var(--space-4) var(--space-6);
-  border-left: 4px solid var(--color-accent);
-  background: var(--color-surface);
+article blockquote {
+  margin: 2rem 0;
+  padding: 1rem 1.5rem;
+  border-left: 4px solid var(--color-tomato-9);
+  background: var(--color-gray-2);
   border-radius: 0 8px 8px 0;
   font-style: italic;
 }
 
-blockquote p:last-child {
-  margin-bottom: 0;
-}
-
-code {
+article code {
   font-family: var(--font-mono);
   font-size: 0.875em;
   padding: 0.2em 0.4em;
   background: var(--color-gray-3);
   border-radius: 4px;
+  color: var(--color-gray-12);
 }
 
-pre {
+article pre {
   overflow-x: auto;
   border-radius: 8px;
-  margin: var(--space-8) 0;
+  margin: 2rem 0;
 }
 
-pre code {
-  background: none;
-  padding: 0;
-  font-size: 0.875rem;
+article ul, article ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
 }
 
-hr {
+article li {
+  margin-bottom: 0.5rem;
+}
+
+article hr {
   border: none;
-  border-top: 1px solid var(--color-border);
-  margin: var(--space-12) 0;
+  border-top: 1px solid var(--color-gray-6);
+  margin: 3rem 0;
 }
 
 .weight-sample {
-  display: inline-block;
   font-family: var(--font-serif);
   font-size: 1.5rem;
-  margin-right: var(--space-4);
-  color: var(--color-heading);
+  margin-right: 1rem;
+  color: var(--color-gray-12);
 }
 
 .swatch-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-  gap: var(--space-2);
-  margin: var(--space-6) 0;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
 }
 
 .swatch {
@@ -198,10 +141,10 @@ hr {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: var(--space-1);
-  padding: var(--space-4) var(--space-2);
+  gap: 0.25rem;
+  padding: 1rem 0.5rem;
   border-radius: 8px;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-gray-6);
   font-family: var(--font-mono);
   font-size: 0.75rem;
   color: var(--color-gray-11);
@@ -211,13 +154,4 @@ hr {
 .swatch span:first-child {
   font-weight: 600;
   color: var(--color-gray-12);
-}
-
-ul, ol {
-  margin: 0 0 var(--space-6);
-  padding-left: var(--space-6);
-}
-
-li {
-  margin-bottom: var(--space-2);
 }

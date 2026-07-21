@@ -14,6 +14,7 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -21,14 +22,31 @@ const { Content } = await render(post);
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <title>{post.data.title}</title>
+    <title>{post.data.title} — John Chisowa</title>
     <meta name="description" content={post.data.description} />
   </head>
-  <body>
-    <main>
-      <h1>{post.data.title}</h1>
-      <p>Written by {post.data.author}</p>
-      <Content />
+  <body class="bg-gray-1 text-gray-11">
+    <main class="mx-auto max-w-2xl px-6 py-16 md:py-24">
+      <a href="/" class="inline-flex items-center gap-1 text-sm font-medium text-gray-10 hover:text-tomato-9 transition-colors duration-200 no-underline mb-8">
+        &larr; Home
+      </a>
+      <article>
+        <header class="mb-12">
+          <h1 class="font-serif text-4xl md:text-5xl font-extrabold tracking-tight text-gray-12 leading-tight">
+            {post.data.title}
+          </h1>
+          <div class="mt-4 flex flex-wrap items-center gap-3 text-sm text-gray-10">
+            <span>{post.data.author}</span>
+            <span>&middot;</span>
+            <time datetime={post.data.pubDate.toISOString()}>
+              {post.data.pubDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </time>
+          </div>
+        </header>
+        <div class="prose-custom">
+          <Content />
+        </div>
+      </article>
     </main>
   </body>
 </html>
