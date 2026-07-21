@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 import Footer from '../components/Footer.astro';
 
 const posts = await getCollection('blog');
-posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+posts.sort((a: { data: { pubDate: { getTime: () => number; }; }; }, b: { data: { pubDate: { getTime: () => number; }; }; }) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 ---
 
 <!doctype html>
@@ -37,7 +37,7 @@ posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
         <h2 class="font-serif text-2xl font-bold text-gray-12 mb-10">Blog</h2>
         <div class="space-y-10">
           {
-            posts.map((post) => (
+            posts.map((post: { id: any; data: { title: unknown; pubDate: { toLocaleDateString: (arg0: string, arg1: { year: string; month: string; day: string; }) => unknown; }; description: unknown; }; }) => (
               <a href={`/blog/${post.id}`} class="block group no-underline">
                 <article class="border-b border-gray-6 pb-10">
                   <h3 class="font-serif text-xl font-bold text-gray-12 group-hover:text-tomato-9 transition-colors duration-200">
