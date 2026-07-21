@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { getCollection } from 'astro:content';
+import Footer from '../components/Footer.astro';
 
 const posts = await getCollection('blog');
 posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
@@ -28,9 +29,7 @@ posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
         </p>
         <div class="mt-6 flex flex-wrap items-center gap-4 text-sm text-gray-10">
           <span>Lusaka, Zambia</span>
-          <span class="inline-flex items-center rounded-full bg-tomato-3 px-3 py-1 text-xs font-medium text-tomato-11">
-            Available for work
-          </span>
+         
         </div>
       </section>
 
@@ -55,5 +54,6 @@ posts.sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
         </div>
       </section>
     </main>
+    <Footer />
   </body>
 </html>
